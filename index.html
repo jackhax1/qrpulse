@@ -12,8 +12,8 @@
             } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://apps.apple.com/us/app/myrapid-pulse/id6736607730";
             } else {
-                // Optional: redirect to a webpage or show a message
-                document.body.innerHTML = "<h1>Please visit this page on your mobile device.</h1>";
+                // Redirect to the specified URL for non-mobile devices
+                window.location.href = "https://myrapid.com.my/pulse/mobile-app/";
             }
         }
     </script>
@@ -21,3 +21,4 @@
 <body>
 </body>
 </html>
+
