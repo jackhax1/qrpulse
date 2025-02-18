@@ -3,22 +3,33 @@
 <head>
     <title>App Redirect</title>
     <script>
-        window.onload = function() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        // Function to redirect based on user agent
+        function redirectUser() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            // Redirect based on user agent
+            // Android devices
             if (/android/i.test(userAgent)) {
                 window.location.href = "https://play.google.com/store/apps/details?id=com.prasarana.pulse.v4";
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            }
+            // iOS devices
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.location.href = "https://apps.apple.com/us/app/myrapid-pulse/id6736607730";
-            } else {
-                // Redirect to the specified URL for non-mobile devices
+            }
+            // Non-mobile devices
+            else {
                 window.location.href = "https://myrapid.com.my/pulse/mobile-app/";
             }
         }
+
+        // Add a slight delay for user feedback
+        window.onload = function() {
+            document.querySelector('.loading-message').textContent = "Redirecting you to app store...";
+            setTimeout(redirectUser, 1500); // 1.5-second delay
+        };
     </script>
 </head>
 <body>
+    <div class="loading-message">Loading...</div>
 </body>
 </html>
 
